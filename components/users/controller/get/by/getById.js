@@ -1,6 +1,6 @@
 const BProm = require('bluebird');
 const _ = require('lodash');
-const userDal = require('./../dal');
+const userDal = require('./../../../dal');
 
 module.exports = function getUserById (req) {
     return new BProm((resolve, reject) => {

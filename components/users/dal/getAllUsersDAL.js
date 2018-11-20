@@ -5,7 +5,7 @@ module.exports = function getAllUsersDAL () {
     return new BProm((resolve, reject) => {
         utils.mysqlConnect()
             .then((conn) => {
-                let qry = `SELECT * FROM demo_api.users_with_food;`;
+                let qry = `SELECT * FROM demo_api.users_view;`;
 
                 conn.query(qry, (err, results, fields) => {
                     if (err) {

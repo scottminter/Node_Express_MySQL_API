@@ -1,6 +1,6 @@
 let userController = {};
 
-userController.getAllUsers = require('./getAllUsers');
-userController.getUserById = require('./getUserById');
+userController.get = require('./get');
+userController.create = require('./create');
 
 module.exports = userController;
