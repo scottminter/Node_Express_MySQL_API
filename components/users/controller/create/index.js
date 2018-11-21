@@ -1,5 +1,4 @@
 const BProm = require('bluebird');
-const _ = require('lodash');
 const Joi = require('joi');
 const CryptoJS = require('crypto-js');
 const usersDal = require('./../../dal');

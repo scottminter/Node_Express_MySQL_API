@@ -1,8 +1,7 @@
 const Express = require('express');
 const router = Express.Router();
+const _ = require('lodash');
 const users = require('./controller');
-
-
 
 /**
  * Get all Users
@@ -21,7 +20,9 @@ router.get('/', (req, res) => {
  * Get single User by id
  */
 router.get('/id/:id', (req, res) => {
-    users.get.by.id(req)
+    let userId = _.get(req, 'params.id');
+
+    users.get.by.id(userId)
         .then((user) => {
             res.json(user);
         })
@@ -34,7 +35,9 @@ router.get('/id/:id', (req, res) => {
  * Get User by username
  */
 router.get('/username/:username', (req, res) => {
-    users.get.by.username(req)
+    let username = _.get(req, 'params.username');
+
+    users.get.by.username(username)
         .then((user) => {
             res.json(user);
         })
