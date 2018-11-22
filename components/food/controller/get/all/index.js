@@ -5,8 +5,8 @@ const DAL = require('./../../../dal');
 module.exports = function getAllFood () {
     return new BProm((resolve, reject) => {
         DAL.getAllFood()
-            .then((users) => {
-                return resolve(users);
+            .then((foods) => {
+                return resolve(foods);
             });
     });
 };
