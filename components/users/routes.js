@@ -62,7 +62,15 @@ router.post('/', (req, res) => {
 /**
  * Put User (update)
  */
-
+router.put('/', (req, res) => {
+    users.update(req.body)
+        .then((results) => {
+            res.json(results);
+        })
+        .catch((err) => {
+            res.status(400).send(err);
+        });
+});
 /**
  * Delete User (delete)
  */

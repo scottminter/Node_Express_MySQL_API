@@ -1,8 +1,8 @@
 const BProm = require('bluebird');
 const Joi = require('joi');
-const CryptoJS = require('crypto-js');
 const usersDal = require('./../../dal');
 const createUserSchema = require('./../../schemas/createUserSchema');
+const helpers = require('./../../../utils').helpers;
 
 module.exports = function createNewUser(reqBody) {
     let isValid = {}
@@ -17,8 +17,8 @@ module.exports = function createNewUser(reqBody) {
             });   
         }
 
-        newUserData = isValid.value;
-        newUserData.password = CryptoJS.SHA256(newUserData.password + '-' + newUserData.username).toString();
+        newUserData = isValid.value;        
+        newUserData.password = helpers.getPasswordHash(newUserData.password, newUserData.email);
 
         usersDal.createNewUser(newUserData)
             .then((results) => {

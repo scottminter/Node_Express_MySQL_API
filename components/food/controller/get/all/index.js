@@ -1,10 +1,10 @@
 const BProm = require('bluebird');
 const _ = require('lodash');
-const usersDal = require('./../../../dal');
+const DAL = require('./../../../dal');
 
-module.exports = function getAllUsers () {
+module.exports = function getAllFood () {
     return new BProm((resolve, reject) => {
-        usersDal.getAllUsers()
+        DAL.getAllFood()
             .then((users) => {
                 return resolve(users);
             });

@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 
 let app = express()
     , users = require('./components/users/routes')
-    //, food = require('./components/food/routes')
+    , food = require('./components/food/routes')
     , port = 8080;
 
 // allow CORS
@@ -20,14 +20,14 @@ app.use(bodyParser.json());
  * Verifies the API is working
  */
 app.get('/', (req, res) => {
-    res.json({ 'message': 'Food Truck API is working!' });
+    res.json({ 'message': 'Demo API is working!' });
 });
 
 /**
  * Set up routes from components
  */
 app.use('/users', users);
-//app.use('/food', food);
+app.use('/food', food);
 
 // define port the api runs on
 app.listen(port);

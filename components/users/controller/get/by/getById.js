@@ -1,6 +1,6 @@
 const BProm = require('bluebird');
 const _ = require('lodash');
-const userDal = require('./../../../dal');
+const DAL = require('./../../../dal');
 
 module.exports = function getUserById (userId) {
     return new BProm((resolve, reject) => {
@@ -11,7 +11,7 @@ module.exports = function getUserById (userId) {
             });
         }
 
-        userDal.getUserById(userId)
+        DAL.getUserById(userId)
             .then((user) => {
                 if (user.foods) {
                     user.foods = _.split(user.foods, ',');
