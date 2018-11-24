@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 const BProm = require('bluebird');
-const mysqlConfigs = require('./../../configs').mysql;
+const mysqlConfigs = require('./../../../configs').mysql;
 
 module.exports = function connectToMysql () {
     return new BProm((resolve, reject) => {

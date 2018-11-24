@@ -1,30 +1,31 @@
 const BProm = require('bluebird')
 const _ = require('lodash');
-const utils = require('./../../utils');
+const mysql = require('./../../utils/mysql');
 
-module.exports = function createNewUserDAL (newUser) {
-    let newUserId = null;
+module.exports = function createNewFoodDAL (newFood) {
+    let newFoodId = null;
 
     return new BProm((resolve, reject) => {
-        utils.mysqlConnect()
+        mysql.connect()
             .then((conn) => {
-                let qry = `call create_new_user('${newUser.username}', '${newUser.email}', '${newUser.password}', '${newUser.first_name}', '${newUser.last_name}');`;
+                let qry = `call create_new_food('${newFood.food}', '${newFood.taste}');`;
 
                 conn.query(qry, (err, results, fields) => {
                     if (err) {
                         return reject(err);
                     }
 
-                    newUserId = _.get(results, '[0][0].newUserId');
-                    if (newUserId === 0) {
+                    newFoodId = _.get(results, '[0][0].id');
+                    if (newFoodId === 0) {
                         return reject({
-                            message: 'User Already Exits',
+                            message: _.get(results, '[0][0].message'),
                             statusCode: 400
                         });
+                    } else {
+                        return resolve(_.get(results, '[0][0]', {}));
                     }
-
-                    return resolve(results || []);
                 });
+
             })
             .catch((err) => {
                 return reject(err);

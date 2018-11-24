@@ -46,4 +46,17 @@ router.get('/name/:name', (req, res) => {
         });
 });
 
+/**
+ * Create new Food
+ */
+router.post('/', (req, res) => {
+    food.create(req.body)
+        .then((results) => {
+            res.json(results);
+        })
+        .catch((err) => {
+            res.status(400).send(err);
+        });
+});
+
 module.exports = router;
