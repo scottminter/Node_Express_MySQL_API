@@ -2,7 +2,7 @@ const BProm = require('bluebird')
 const _ = require('lodash');
 const utils = require('./../../utils');
 
-module.exports = function createNewUserDAL (newUser) {
+module.exports = function updateUserDAL (newUser) {
     return new BProm((resolve, reject) => {
         utils.mysqlConnect()
             .then((conn) => {

@@ -59,4 +59,17 @@ router.post('/', (req, res) => {
         });
 });
 
+/**
+ * Update Food
+ */
+router.put('/', (req, res) => {
+    food.update(req.body)
+        .then((results) => {
+            res.json(results);
+        })
+        .catch((err) => {
+            res.status(400).send(err);
+        });
+});
+
 module.exports = router;
