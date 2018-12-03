@@ -1,14 +1,13 @@
 const BProm = require('bluebird');
 const Joi = require('joi');
 const DAL = require('./../../dal');
-const createFoodSchema = require('../../schemas/foodSchema');
+const schema = require('../../schemas/foodSchema');
 
 module.exports = function createNewFood(reqBody) {
-    let isValid = {}
-        , newFoodData = {};
+    let isValid = {};
 
     return new BProm((resolve, reject) => {
-        isValid = Joi.validate(reqBody, createFoodSchema);
+        isValid = Joi.validate(reqBody, schema);
         if (isValid.error) {
             return reject({
                 code: 400,
@@ -16,9 +15,7 @@ module.exports = function createNewFood(reqBody) {
             });   
         }
 
-        newFoodData = isValid.value; 
-
-        DAL.createNewFood(newFoodData)
+        DAL.createNewFood(isValid.value)
             .then((results) => {
                 return resolve(results);
             })

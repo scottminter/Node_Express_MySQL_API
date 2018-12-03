@@ -18,7 +18,7 @@ module.exports = function createNewUser(reqBody) {
         }
 
         newUserData = isValid.value;        
-        newUserData.password = helpers.getPasswordHash(newUserData.password, newUserData.email);
+        newUserData.password = helpers.getPasswordHash(newUserData.password);
 
         usersDal.createNewUser(newUserData)
             .then((results) => {

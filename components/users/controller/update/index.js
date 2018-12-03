@@ -18,7 +18,7 @@ module.exports = function updateUser(reqBody) {
         }
 
         updateUserData = isValid.value;        
-        updateUserData.password = helpers.getPasswordHash(updateUserData.password, updateUserData.email);
+        updateUserData.password = helpers.getPasswordHash(updateUserData.password);
 
         usersDal.updateUser(updateUserData)
             .then((results) => {

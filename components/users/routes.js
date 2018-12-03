@@ -71,8 +71,18 @@ router.put('/', (req, res) => {
             res.status(400).send(err);
         });
 });
+
 /**
  * Delete User (delete)
  */
+router.delete('/', (req, res) => {
+    users.delete(req.body)
+        .then((results) => {
+            res.json(results);
+        })
+        .catch((err) => {
+            res.status(400).send(err);
+        });
+});
 
 module.exports = router;

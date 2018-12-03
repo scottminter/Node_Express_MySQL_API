@@ -1,13 +1,15 @@
 const BProm = require('bluebird');
 const Joi = require('joi');
 const DAL = require('./../../dal');
-const foodSchema = require('../../schemas/foodSchema');
+const schema = require('./../../schemas/deleteUserSchema');
+const helpers = require('./../../../utils').helpers;
 
-module.exports = function updateFood (reqBody) {
-    let isValid = {};
+module.exports = function deleteUser (userData) {
+    let isValid = {}
+        , deleteUserData = {};
 
     return new BProm((resolve, reject) => {
-        isValid = Joi.validate(reqBody, foodSchema);
+        isValid = Joi.validate(userData, schema);
         if (isValid.error) {
             return reject({
                 code: 400,
@@ -15,7 +17,10 @@ module.exports = function updateFood (reqBody) {
             });   
         }
 
-        DAL.updateFood(isValid.value)
+        deleteUserData = isValid.value;        
+        deleteUserData.password = helpers.getPasswordHash(deleteUserData.password);
+
+        DAL.deleteUser(deleteUserData)
             .then((results) => {
                 return resolve(results);
             })
