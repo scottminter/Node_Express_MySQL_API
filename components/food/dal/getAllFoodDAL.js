@@ -8,6 +8,8 @@ module.exports = function getAllUsersDAL () {
                 let qry = `SELECT * FROM demo_api.foods_view;`;
 
                 conn.query(qry, (err, results, fields) => {
+                    conn.end();
+
                     if (err) {
                         return reject(err);
                     }

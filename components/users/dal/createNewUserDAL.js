@@ -11,6 +11,7 @@ module.exports = function createNewUserDAL (newUser) {
                 let qry = `call create_new_user('${newUser.username}', '${newUser.email}', '${newUser.password}', '${newUser.first_name}', '${newUser.last_name}');`;
 
                 conn.query(qry, (err, results, fields) => {
+                    conn.end();
                     if (err) {
                         return reject(err);
                     }

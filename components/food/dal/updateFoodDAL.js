@@ -11,6 +11,8 @@ module.exports = function updateFoodDAL (foodData) {
                 let qry = `CALL update_food('${foodData.food}', '${foodData.taste}');`;
 
                 conn.query(qry, (err, results, fields) => {
+                    conn.end();
+
                     if (err) {
                         return reject(err);
                     }

@@ -3,13 +3,15 @@ const _ = require('lodash');
 const mysql = require('./../../utils/mysql');
 
 module.exports = function deleteFood(foodObj) {
-console.log('del food dal', foodObj);    
     return new BProm((resolve, reject) => {
         mysql.connect()
             .then((conn) => {
-                let qry = `CALL delete_food(${foodObj.id}, '${foodObj.name}');`;
+                let qry = `CALL delete_food(${foodObj.id}, '${foodObj.name}');`
+                    , success = null;
 
                 conn.query(qry, (err, results, fields) => {
+                    conn.end();
+
                     if (err) {
                         return reject({
                             code: 400,

@@ -8,6 +8,8 @@ module.exports = function getFoodByIdDAL (id) {
                 let qry = `SELECT * FROM demo_api.foods_view WHERE id = ${id};`;
 
                 conn.query(qry, (err, results, fields) => {
+                    conn.end();
+
                     if (err) {
                         return reject(err);
                     }

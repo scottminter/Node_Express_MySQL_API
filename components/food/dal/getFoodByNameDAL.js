@@ -8,6 +8,8 @@ module.exports = function getFoodByNameDAL (name) {
                 let qry = `SELECT * FROM demo_api.foods_view WHERE name = '${name}';`;
 
                 conn.query(qry, (err, results, fields) => {
+                    conn.end();
+
                     if (err) {
                         return reject(err);
                     }
