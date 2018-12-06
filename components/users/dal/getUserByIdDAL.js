@@ -1,5 +1,5 @@
 const BProm = require('bluebird');
-const mysql = require('./../../utils/mysql');
+const mysql = require('./../../utils').mysql;
 
 module.exports = function getUserByIdDAL (id) {
     return new BProm((resolve, reject) => {

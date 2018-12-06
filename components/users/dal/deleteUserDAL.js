@@ -1,6 +1,6 @@
 const BProm = require('bluebird');
 const _ = require('lodash');
-const mysql = require('./../../utils/mysql');
+const mysql = require('./../../utils').mysql;
 
 module.exports = function deleteUser (deleteUserData) {
     return new BProm((resolve, reject) => {
