@@ -1,9 +1,9 @@
 const BProm = require('bluebird');
-const utils = require('./../../utils');
+const mysql = require('./../../utils').mysql;
 
 module.exports = function getFoodByIdDAL (id) {
     return new BProm((resolve, reject) => {
-        utils.mysqlConnect()
+        mysql.connect()
             .then((conn) => {
                 let qry = `SELECT * FROM demo_api.foods_view WHERE id = ${id};`;
 

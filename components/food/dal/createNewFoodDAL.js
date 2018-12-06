@@ -1,6 +1,6 @@
 const BProm = require('bluebird')
 const _ = require('lodash');
-const mysql = require('./../../utils/mysql');
+const mysql = require('./../../utils').mysql;
 
 module.exports = function createNewFoodDAL (newFood) {
     let newFoodId = null;
@@ -11,6 +11,8 @@ module.exports = function createNewFoodDAL (newFood) {
                 let qry = `call create_new_food('${newFood.food}', '${newFood.taste}');`;
 
                 conn.query(qry, (err, results, fields) => {
+                    conn.end();
+
                     if (err) {
                         return reject(err);
                     }

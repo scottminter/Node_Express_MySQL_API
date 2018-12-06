@@ -1,17 +1,18 @@
 const BProm = require('bluebird')
 const _ = require('lodash');
-const utils = require('./../../utils');
+const mysql = require('./../../utils/mysql');
 
 module.exports = function createNewUserDAL (newUser) {
     let newUserId = null;
 
     return new BProm((resolve, reject) => {
-        utils.mysqlConnect()
+        mysql.connect()
             .then((conn) => {
                 let qry = `call create_new_user('${newUser.username}', '${newUser.email}', '${newUser.password}', '${newUser.first_name}', '${newUser.last_name}');`;
 
                 conn.query(qry, (err, results, fields) => {
                     conn.end();
+
                     if (err) {
                         return reject(err);
                     }

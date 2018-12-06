@@ -1,6 +1,6 @@
 let utils = {};
 
-utils.mysqlConnect = require('./mysqlConnect');
 utils.helpers = require('./helpers');
+utils.mysql = require('./mysql');
 
 module.exports = utils;
