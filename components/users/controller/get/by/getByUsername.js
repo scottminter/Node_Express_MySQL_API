@@ -1,6 +1,7 @@
 const BProm = require('bluebird');
 const _ = require('lodash');
-const userDal = require('./../../../dal');
+const helpers = require('./../../../../utils').helpers;
+const DAL = require('./../../../dal');
 
 module.exports = function getUserByUsername (username) {
     return new BProm((resolve, reject) => {
@@ -11,8 +12,10 @@ module.exports = function getUserByUsername (username) {
             });
         }
 
-        userDal.getUserByUsername(username)
+        DAL.getUserByUsername(username)
             .then((user) => {
+                user.foods = helpers.getArrayFromCSV(user.foods);
+
                 return resolve(user);
             })
             .catch((err) => {

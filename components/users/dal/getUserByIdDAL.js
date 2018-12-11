@@ -5,7 +5,7 @@ module.exports = function getUserByIdDAL (id) {
     return new BProm((resolve, reject) => {
         mysql.connect()
             .then((conn) => {
-                let qry = `SELECT * FROM demo_api.users_view WHERE id = ${id};`;
+                let qry = `SELECT * FROM demo_api.users_with_food_view WHERE userId = ${id};`;
 
                 conn.query(qry, (err, results, fields) => {
                     conn.end();

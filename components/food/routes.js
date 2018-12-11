@@ -76,7 +76,6 @@ router.put('/', (req, res) => {
  * Delete Food
  */
 router.delete('/', (req, res) => {
-    console.log(req.body);
     food.delete(req.body)
         .then((results) => {
             res.json(results);

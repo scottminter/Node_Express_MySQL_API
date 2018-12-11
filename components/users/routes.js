@@ -60,10 +60,25 @@ router.post('/', (req, res) => {
 });
 
 /**
+ * Add favorite food for user
+ */
+router.put('/id/:userId/liked-food', (req, res) => {
+    let userId = _.get(req, 'params.userId');
+
+    users.update.addFoodPreference(userId, req.body)
+        .then((results) => {
+            res.json(results);
+        })
+        .catch((err) => {
+            res.status(400).send(err);
+        });
+});
+
+/**
  * Put User (update)
  */
 router.put('/', (req, res) => {
-    users.update(req.body)
+    users.update.user(req.body)
         .then((results) => {
             res.json(results);
         })

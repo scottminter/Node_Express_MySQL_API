@@ -1,0 +1,403 @@
+{
+	"info": {
+		"_postman_id": "8523763a-60b2-4a7f-81a9-452e1606d210",
+		"name": "Express MySQL RESTful API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080",
+					"host": [
+						"localhost"
+					],
+					"port": "8080"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MySQL Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/mysql",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"mysql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/users/id/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"id",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User By Username",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/users/username/test_user_4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"username",
+						"test_user_4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"test_user_4\",\n\t\"password\": \"pw4\",\n\t\"email\": \"tu4@test.com\",\n\t\"first_name\": \"test\",\n\t\"last_name\": \"user4\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/users/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test_user_3\",\n    \"password\": \"pw3\",\n    \"email\": \"tu3@test.com\",\n    \"first_name\": \"test user\",\n    \"last_name\": \"user3\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/users/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Food Preference",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"foodId\": 8,\n\t\"foodName\": \"sushi\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/users/id/2/liked-food",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"id",
+						"2",
+						"liked-food"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"meg_gliebe\",\n\t\"password\": \"pw1\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/users/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Food",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/food/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"food",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Food By Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/food/name/chicken%20nuggets",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"food",
+						"name",
+						"chicken%20nuggets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Food By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/food/id/10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"food",
+						"id",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Food",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"food\": \"apple pie\",\n\t\"taste\": \"sweet\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/food/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"food",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Food",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"food\": \"sushi\",\n\t\"taste\": \"savory\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/food/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"food",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Food",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"18\",\n\t\"name\": \"omlette\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/food/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"food",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
