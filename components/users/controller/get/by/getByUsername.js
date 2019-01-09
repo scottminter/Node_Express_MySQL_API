@@ -13,10 +13,12 @@ module.exports = function getUserByUsername (username) {
         }
 
         DAL.getUserByUsername(username)
-            .then((user) => {
-                user.foods = helpers.getArrayFromCSV(user.foods);
+            .then((users) => {
+                for (let i = 0; i < users.length; i++) {
+                    users[i].foods = helpers.getArrayFromCSV(users[i].foods);
+                }
 
-                return resolve(user);
+                return resolve(users);
             })
             .catch((err) => {
                 return reject(err);
