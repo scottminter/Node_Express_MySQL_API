@@ -28,10 +28,14 @@ apt-get install -y mysql-server
 # mysql> CREATE USER 'finley'@'%' IDENTIFIED BY 'password';
 # mysql> GRANT ALL PRIVILEGES ON *.* TO 'finley'@'%'
 #    ->     WITH GRANT OPTION;
+# USERPW='root'
+# mysql -u root -p$USERPW < ./database/new_user.sql
 
 # restart mysql
+# service mysql restart
 
 # create demo_api database
+# mysql -u root -p$USERPW < ./database/create_database.sql;
 
 # add db credentials to api config file
 
