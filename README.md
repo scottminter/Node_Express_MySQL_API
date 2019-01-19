@@ -5,7 +5,10 @@ helper functions and DB connection.
 
 ## Database
 This is run on a MySQL database.  You can find a database dump in the database 
-directory.  When you install it there is some example data provided. 
+directory.  When you install it there is some example data provided.  
+
+Once your database is setup, you will need to add the connection data to the 
+connection file found in the `configs/mysql.js` file. 
 
 ## Vagrant
 The Vagrant file isn't complete and doesn't fully set up with project.  It should stand up a 
