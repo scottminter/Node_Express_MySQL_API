@@ -3,9 +3,7 @@ const router = Express.Router();
 const _ = require('lodash');
 const food = require('./controller');
 
-/**
- * Get all Foods
- */
+// Get all food
 router.get('/', (req, res) => {
     food.get.all()
         .then((foods) => {
@@ -16,9 +14,7 @@ router.get('/', (req, res) => {
         });
 });
 
-/**
- * Get Food by Id
- */
+// Get food by id
 router.get('/id/:id', (req, res) => {
     let id = _.get(req, 'params.id');
 
@@ -31,9 +27,7 @@ router.get('/id/:id', (req, res) => {
         });
 });
 
-/**
- * Get Food by Name
- */
+// Get food by name
 router.get('/name/:name', (req, res) => {
     let name = _.get(req, 'params.name');
 
@@ -46,9 +40,7 @@ router.get('/name/:name', (req, res) => {
         });
 });
 
-/**
- * Create new Food
- */
+// Insert new food
 router.post('/', (req, res) => {
     food.create(req.body)
         .then((results) => {
@@ -59,9 +51,7 @@ router.post('/', (req, res) => {
         });
 });
 
-/**
- * Update Food
- */
+// Update food
 router.put('/', (req, res) => {
     food.update(req.body)
         .then((results) => {
@@ -72,9 +62,7 @@ router.put('/', (req, res) => {
         });
 });
 
-/**
- * Delete Food
- */
+// Delete food
 router.delete('/', (req, res) => {
     food.delete(req.body)
         .then((results) => {

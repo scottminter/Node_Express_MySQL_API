@@ -3,9 +3,7 @@ const router = Express.Router();
 const _ = require('lodash');
 const users = require('./controller');
 
-/**
- * Get all Users
- */
+// Get all users
 router.get('/', (req, res) => {
     users.get.all()
         .then((users) => {
@@ -16,9 +14,7 @@ router.get('/', (req, res) => {
         });
 });
 
-/**
- * Get single User by id
- */
+// Get single User by id
 router.get('/id/:id', (req, res) => {
     let userId = _.get(req, 'params.id');
 
@@ -31,9 +27,7 @@ router.get('/id/:id', (req, res) => {
         });
 });
 
-/**
- * Get User by username
- */
+// Get User by username
 router.get('/username/:username', (req, res) => {
     let username = _.get(req, 'params.username');
 
@@ -46,9 +40,7 @@ router.get('/username/:username', (req, res) => {
         });
 });
 
-/**
- * Post new User (create)
- */
+// Post new User (create)
 router.post('/', (req, res) => {
     users.create(req.body)
         .then((results) => {
@@ -59,9 +51,7 @@ router.post('/', (req, res) => {
         })
 });
 
-/**
- * Add favorite food for user
- */
+// Add favorite food for user
 router.put('/id/:userId/liked-food', (req, res) => {
     let userId = _.get(req, 'params.userId');
 
@@ -74,9 +64,7 @@ router.put('/id/:userId/liked-food', (req, res) => {
         });
 });
 
-/**
- * Put User (update)
- */
+// Put User (update)
 router.put('/', (req, res) => {
     users.update.user(req.body)
         .then((results) => {
@@ -87,9 +75,7 @@ router.put('/', (req, res) => {
         });
 });
 
-/**
- * Delete User (delete)
- */
+// Delete User (delete)
 router.delete('/', (req, res) => {
     users.delete(req.body)
         .then((results) => {
