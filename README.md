@@ -4,8 +4,8 @@ of code into components.  Each component is mostly self contained other than a f
 helper functions and DB connection. 
 
 ## Database
-This is run on a MySQL database.  You can find a database backup in the database 
-directory.  When you install there is some example data as well. 
+This is run on a MySQL database.  You can find a database dump in the database 
+directory.  When you install it there is some example data provided. 
 
 ## Vagrant
 The Vagrant file isn't complete and doesn't fully set up with project.  It should stand up a 
